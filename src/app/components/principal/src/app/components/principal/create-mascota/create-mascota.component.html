@@ -1,0 +1,49 @@
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
+<app-header-principal></app-header-principal>
+<div class="container" style="margin-top: 120px;margin-bottom: 70px;">
+    <div class="card mx-4 my-5">
+        <div class="card-header">
+            <h3 class="py-2">Agregar mascota</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="savePets()" class="pt-3">
+                <div class="mb-3">
+                    <label class="form-label" >Nombre de mascota</label>
+                    <input type="text" class="form-control" formControlName="nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Especie</label>
+                    <input type="text" class="form-control" formControlName="especie" name="especie">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" >Fecha de nacimiento</label>
+                    <input type="text" class="form-control" placeholder="dd/mm/aaaa" formControlName="fecha" name="fecha" >
+                </div>
+                <div class="mb-3">
+                    <label for="sexoSelect" class="form-label">Sexo</label>
+                    <select id="sexoSelect" class="form-select" formControlName="sexo">
+                        <option selected>Seleccione</option>
+                        <option value="M">Macho</option>
+                        <option value="H">Hembra</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Imagen</label>
+                    <input type="text" class="form-control" formControlName="imagen" name="imagen">
+                </div>
+                <button  class="btn btn-primary mt-2" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+    </div>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
