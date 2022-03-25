@@ -23,5 +23,8 @@ export class ApiService{
         return this.http.post<User>(dir,form);
         console.log(form);
     }
-
+    logout() {
+        /*this.usuario = {};
+        return this.authService.signOut();*/
+    }
 }

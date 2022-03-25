@@ -27,21 +27,20 @@ export class MascotasListComponent implements OnInit {
   constructor(public sanitizer: DomSanitizer, private mascotaService: MascotaService, private activateRoute
     : ActivatedRoute) {
     this.cssUrl = 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css';
-    
   }
 
   ngOnInit(): void {
     this.loadMascotas();
-    const params= this.activateRoute.snapshot.params;
+    /*const params= this.activateRoute.snapshot.params;
     if(params.id){
       this.mascotaModel.id=params.id;
       this.mascotaModel.nombre=params.nombre;
       this.mascotaModel.tipo=params.tipo;
       //this.edit=true;
-    }
+    }*/
 
-    this.Username = this.activateRoute.snapshot.paramMap.get('idUser');
-    console.log(this.Username);
+  /*  this.Username = this.activateRoute.snapshot.paramMap.get('idUser');
+    console.log(this.Username);*/
 
   }
 
@@ -55,29 +54,9 @@ export class MascotasListComponent implements OnInit {
       err =>console.error(err)
     )
   }
-  savePets():void {
-    this.mascotaService.saveMascotas(this.mascotaModel).subscribe(
-      res=>{
-        console.log("Se registro: ",res);
-        this.mascotaModel.id="";
-        this.mascotaModel.nombre="";
-        this.mascotaModel.tipo="";
-        Swal.fire({
-          icon: 'success',
-          title: 'Mascota registrada',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.loadMascotas();
-        
-        //this.router.navigate['/listado'];
-      },
-      err =>console.error(err + "AQUI")
-    )
-    console.log(this.mascotaModel);
-  }
 
-  DeletePet(id:String):void{
+  DeletePet(id:number):void{
+    console.log("ID ELIMINAR:", id)
     Swal.fire({
       title: '¿Estas seguro de eliminar datos de la mascota?',
       text: "!No podra recuperar su datos!",
@@ -89,12 +68,16 @@ export class MascotasListComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.mascotaService.deleteMascota(id).subscribe(
-          res=>{
+          res => {
             console.log("Se elimino el objeto");
-            this.loadMascotas();
             //this.router.navigate['/listado'];
           },
-          err =>console.error(err)
+          err =>{
+            if(err.status == 200){
+              console.log("Se elimino el objeto");
+              this.loadMascotas();
+            }
+          }
         )
         Swal.fire(
           'Eliminado!',
@@ -102,29 +85,7 @@ export class MascotasListComponent implements OnInit {
           'success'
         )
       }
-    })
-    
-  }
-
-  updatePet():void {
-
-    this.mascotaService.updateMascota(this.mascotaModel.id, this.mascotaModel).subscribe(
-      res=>{
-        console.log("Se editara: ",res);
-        this.mascotaModel.id="";
-        this.mascotaModel.nombre="";
-        this.mascotaModel.tipo="";
-        Swal.fire({
-          icon: 'success',
-          title: 'Actualizado mascota',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.loadMascotas();
-      },
-      err =>console.error(err)
-    )
-    console.log(this.mascotaModel);
+    }) 
   }
 
   MostrarModal(id : string):void{

@@ -3,24 +3,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MascotasListComponent } from './components/principal/mascotas-list/mascotas-list.component';
 
-import { ChatAdopComponent } from './components/principal/chat-adop/chat-adop.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { CreateMascotaComponent } from './components/principal/src/app/components/principal/create-mascota/create-mascota.component';
+import { CrearMascotaComponent } from './components/principal/crear-mascota/crear-mascota.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { UserGuard } from './guards/user.guard';
+import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component';
 
 const routes: Routes = [
   { path: 'home' , component: HomeComponent},
   { path: '' , component: HomeComponent},
   { path: 'login' , component: LoginComponent},
   { path: 'registroUsuario' , component: RegistroComponent},
-  { path: 'registroMascota' , component: CreateMascotaComponent},
-  { path: 'chat' , component: ChatAdopComponent},
-  { path: 'listado' , component: MascotasListComponent},
-  { path: 'listado/:idUser' , component: MascotasListComponent},
-  { path: 'listado/edit/:id/:nombre/:tipo' , component: MascotasListComponent},
-  { path: '**', redirectTo: '/', pathMatch: 'full'},
+  {path: 'principal', component: PrincipalComponent, children: [
+      { path: '', redirectTo: 'listado', pathMatch: 'full' },
+      { path: 'listado' , component: MascotasListComponent},
+      { path: 'registroMascota' , component: CrearMascotaComponent},
+      { path: 'formAdopcion/:id' , component: FormAdopcionComponent},
+    ],canActivate:[UserGuard]
+  }
 ];
-
+//{ path: 'listado/:idUser' , component: MascotasListComponent},
+//{ path: 'listado/edit/:id/:nombre/:tipo' , component: MascotasListComponent},
+//{ path: '**', redirectTo: '/', pathMatch: 'full'},
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

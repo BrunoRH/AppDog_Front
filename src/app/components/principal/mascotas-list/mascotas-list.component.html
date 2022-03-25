@@ -1,9 +1,9 @@
 <link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<app-header-principal [Username] = "Username" >
+<!--<app-header-principal [Username] = "Username" ></app-header-principal>-->
 
-</app-header-principal>
+
 
 <div class="container" style="margin-top: 120px;margin-bottom: 70px;">
   <div class="row ">
@@ -20,8 +20,12 @@
           </div>
           <div class="card-footer btn-group" style="padding: 0; background-color: white; border: 0;">
             <button class="btn btn-success font-clase" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; font-weight: 300; font-size: 15px; " 
-            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  (click)="MostrarModal(mascota.id)">
+            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/principal/formAdopcion',mascota.id]">
                EN ADOPCIÓN</button>
+               <!-- 
+               [routerLink]="['/principal/formAdopcion',mascota.id]" 
+                (click)="MostrarModal(mascota.id)"
+              -->
           </div>
         </div>
       </div>
@@ -47,5 +51,5 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<app-footer></app-footer>
+<!-- FOOTER 
+<app-footer></app-footer>-->

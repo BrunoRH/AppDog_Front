@@ -11,13 +11,14 @@ import { MascotasListComponent } from './components/principal/mascotas-list/masc
 import { FooterComponent } from './components/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { ChatAdopComponent } from './components/principal/chat-adop/chat-adop.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { MascotaService } from './services/mascota.service';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HeaderPrincipalComponent } from './components/principal/header-principal/header-principal.component';
-import { CreateMascotaComponent } from './components/principal/src/app/components/principal/create-mascota/create-mascota.component';
+import { CrearMascotaComponent } from './components/principal/crear-mascota/crear-mascota.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component';
 
 
 @NgModule({
@@ -25,13 +26,14 @@ import { CreateMascotaComponent } from './components/principal/src/app/component
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    MascotasListComponent,
     FooterComponent,
-    ChatAdopComponent,
+    PrincipalComponent,
     LoginComponent,
     RegistroComponent,
+    MascotasListComponent,
     HeaderPrincipalComponent,
-    CreateMascotaComponent
+    CrearMascotaComponent,
+    FormAdopcionComponent
   ],
   imports: [
     BrowserModule,

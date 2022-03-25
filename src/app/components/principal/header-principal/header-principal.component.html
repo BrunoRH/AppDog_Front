@@ -9,11 +9,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto">
-              <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link " href="#nosotros">Nosotros</a>
-              </li>
               <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link " routerLink ="/listado">
+                <a class="nav-link " routerLink ="/principal/listado">
                     Adopción
                 </a>
               </li>
@@ -23,17 +20,29 @@
                 </a>
               </li>
               <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link " routerLink="/registroMascota">
+                <a class="nav-link " routerLink="/principal/registroMascota">
                     Registrar Mascota
                 </a>
               </li>
             </ul>
           </div>
-          <button class="btn btn-outline-dark m-3 p-2" >
-            <a href="#" class="text-decoration-none text-primary">
-              <i class="fas fa-user mx-1">      {{ Username }}  </i>
-            </a>
-          </button>
+          
+          <div class="btngroup" role="group">
+            <button id="btnGroupDrop1" class="btn btn-info m-3 p-2" >
+              <a href="#" class="text-decoration-none text-white">
+                <i class="fas fa-user mx-1"> </i><span class="user-text">{{ currentUser.username}}</span>
+              </a>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <!--<li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i>Estado adopcion</a></li>
+              <li class="divider"></li>-->
+              <li ><a class="dropdown-item"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
+                <!-- (click)="logout()"-->
+            </ul>
+          </div>
+
+
+          
         </div>
       </nav>
 </header>

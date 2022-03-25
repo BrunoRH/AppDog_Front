@@ -1,0 +1,22 @@
+.form-group{
+    margin-top: 15px;
+}
+.font-clase1{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700; 
+    font-size: 15px;
+}
+.font-clase2{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400; 
+    font-size: 17px;
+}
+.estado-dog{
+    height: 50px;
+    width: 50px;
+    border-radius: 45px;
+}
+
+.form-group label{
+    margin-bottom: 10px;
+}

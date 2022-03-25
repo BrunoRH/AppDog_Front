@@ -20,7 +20,7 @@ export class MascotaService {
     return this.http.get(`${this.API_URL}/buscar/${id}`);
   }
 
-  deleteMascota(id : String){
+  deleteMascota(id : number){
     this.urlApi = `${this.API_URL}/eliminar/${id}`;
     return this.http.delete(this.urlApi);
   }

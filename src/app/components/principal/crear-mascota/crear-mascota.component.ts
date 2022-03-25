@@ -4,23 +4,22 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Mascota } from 'src/app/models/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-create-mascota',
-  templateUrl: './create-mascota.component.html',
-  styleUrls: ['./create-mascota.component.css'],
+  selector: 'app-crear-mascota',
+  templateUrl: './crear-mascota.component.html',
+  styleUrls: ['./crear-mascota.component.css'],
   providers: [MascotaService]
 })
-export class CreateMascotaComponent implements OnInit {
-  
+export class CrearMascotaComponent implements OnInit {
   cssUrl : string;
 
   form: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     especie: new FormControl('', [Validators.required]),
-    fecha: new FormControl('', [Validators.required]),
+    fechaNacimiento: new FormControl('', [Validators.required]),
     sexo: new FormControl('', [Validators.required]),
     estado: new FormControl(1, [Validators.required]),
     imagen: new FormControl('', [Validators.required])
@@ -32,7 +31,7 @@ export class CreateMascotaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   async savePets(){
 
     this.mascotaService.saveMascotas(this.form.value).subscribe(
@@ -49,5 +48,4 @@ export class CreateMascotaComponent implements OnInit {
     )
     console.log(this.form.value);
   }
-
 }

@@ -1,7 +1,9 @@
 export class Mascota {
-    id?: string;
+    id?: number;
     nombre: string;
-    tipo : string;
-    
- 
+    especie:string;
+    fechaNacimiento: string;
+    sexo: string;
+    estado: number;
+    imagen: string;
 }
