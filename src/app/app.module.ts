@@ -20,6 +20,8 @@ import { CrearMascotaComponent } from './components/principal/crear-mascota/crea
 import { PrincipalComponent } from './components/principal/principal.component';
 import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component'; 
 import { ChatComponent } from './components/principal/chat-list/chat.component';
+import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
+import { HomeAdminComponent } from './components/principal-admin/home-admin/home-admin.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ChatComponent } from './components/principal/chat-list/chat.component';
     HeaderPrincipalComponent,
     CrearMascotaComponent,
     FormAdopcionComponent,
-    ChatComponent
+    ChatComponent,
+    PrincipalAdminComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,

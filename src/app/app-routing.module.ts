@@ -10,6 +10,9 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { UserGuard } from './guards/user.guard';
 import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component';
 import { ChatComponent } from './components/principal/chat-list/chat.component';
+import { AdminGuard } from './guards/admin.guard';
+import { HomeAdminComponent } from './components/principal-admin/home-admin/home-admin.component';
+import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
 
 const routes: Routes = [
   { path: 'home' , component: HomeComponent},
@@ -23,7 +26,12 @@ const routes: Routes = [
       { path: 'registroMascota' , component: CrearMascotaComponent},
       { path: 'formAdopcion/:id' , component: FormAdopcionComponent},
     ],canActivate:[UserGuard]
-  }
+  },
+  { path: 'interfaz-admin', component: PrincipalAdminComponent, children: [
+    { path: '', redirectTo: 'home-admin', pathMatch: 'full' },
+    { path: 'home-admin', component: HomeAdminComponent},
+    { path: '**', redirectTo: 'home-admin' }
+  ],canActivate:[AdminGuard]}
 ];
 //{ path: 'listado/:idUser' , component: MascotasListComponent},
 //{ path: 'listado/edit/:id/:nombre/:tipo' , component: MascotasListComponent},

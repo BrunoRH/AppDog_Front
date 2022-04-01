@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          if(dataResponse.rol == 'ADMI') this.router.navigate(["/"])
+          if(dataResponse.rol == 'ADMIN') this.router.navigate(["/interfaz-admin"])
           else this.router.navigate(["/principal"])
         })
       }else{
