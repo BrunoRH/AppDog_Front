@@ -4,6 +4,7 @@ import { ResponseI } from "../models/response.interface";
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from "rxjs"; 
 import { User } from "../models/usuario";
+import { Adopcion } from "../models/adopcion";
 
 
 @Injectable({
@@ -11,20 +12,25 @@ import { User } from "../models/usuario";
 })
 export class ApiService{
     
-    url: string = 'https://appservicesdog.azurewebsites.net/usuarios';
+    url: string = 'https://appservicesdog.azurewebsites.net';
 
     constructor(private http:HttpClient) { }
     
 
     loginByEmail( form : LoginI) : Observable<User>{
 
-        let dir = this.url+"/login"; 
+        let dir = this.url+"/usuarios/login"; 
         console.log("ruta : ", dir);
         return this.http.post<User>(dir,form);
         console.log(form);
     }
+
     logout() {
         /*this.usuario = {};
         return this.authService.signOut();*/
+    }
+
+    enviarMensaje(adopcion:Adopcion):Observable<Adopcion> {
+        return this.http.post<Adopcion>(`${this.url}/enviaremail`, adopcion);
     }
 }

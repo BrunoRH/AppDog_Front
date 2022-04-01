@@ -19,7 +19,7 @@ export class MascotasListComponent implements OnInit {
   router:Router;
   mascotaModel = new Mascota();
   mascotaModal:any= [];
-
+  loading:boolean=false;
   edit: boolean = false;
 
   Username : string;
@@ -48,6 +48,7 @@ export class MascotasListComponent implements OnInit {
     this.mascotaService.getMascotas().subscribe(
       res=>{
         this.mascotas=res;
+        this.loading=true;
         console.log(res)
         console.log(this.mascotas);
       },
@@ -98,6 +99,12 @@ export class MascotasListComponent implements OnInit {
       err => {throw err}
     )
   }
-  
+    
+  statusDog(estado:number): boolean{
+    if(estado==1){
+      return true;
+    }
+    return false;
+  }
 
 }

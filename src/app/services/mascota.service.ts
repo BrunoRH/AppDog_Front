@@ -29,8 +29,10 @@ export class MascotaService {
     return this.http.post<Mascota>(`${this.API_URL}/guardar`, mascot);
   }
 
-  updateMascota(id : String, updateMascot: Mascota ){
-    return this.http.put(`${this.API_URL}/mascotas/${id}`, updateMascot);
+//updateMascota(id : String, updateMascot: Mascota )
+  updateMascota(updateMascot: Mascota){ //PASAR EL ID
+    ///return this.http.put(`${this.API_URL}/mascotas/${id}`, updateMascot);
+    return this.http.put(`${this.API_URL}/actualizar`, updateMascot);
   }
-
+  //2 en proceso,3 ya adoptado
 }

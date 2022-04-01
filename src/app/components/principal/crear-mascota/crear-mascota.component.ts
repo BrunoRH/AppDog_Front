@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Mensaje } from 'src/app/models/mensaje';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Mascota } from 'src/app/models/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';

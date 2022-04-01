@@ -9,6 +9,7 @@ import { CrearMascotaComponent } from './components/principal/crear-mascota/crea
 import { PrincipalComponent } from './components/principal/principal.component';
 import { UserGuard } from './guards/user.guard';
 import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component';
+import { ChatComponent } from './components/principal/chat-list/chat.component';
 
 const routes: Routes = [
   { path: 'home' , component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'principal', component: PrincipalComponent, children: [
       { path: '', redirectTo: 'listado', pathMatch: 'full' },
       { path: 'listado' , component: MascotasListComponent},
+      { path: 'chat' , component: ChatComponent},
       { path: 'registroMascota' , component: CrearMascotaComponent},
       { path: 'formAdopcion/:id' , component: FormAdopcionComponent},
     ],canActivate:[UserGuard]

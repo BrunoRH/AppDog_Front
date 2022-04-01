@@ -280,7 +280,8 @@ html {
   }
   
   .img_login{
-      border-radius: 70%;
+      margin-top: 10px;
+      margin-bottom: 10px;
   }
   
   
@@ -290,7 +291,4 @@ html {
       outline: none;
   } 
   
-  #icon {
-    width:60%;
-  }
   
