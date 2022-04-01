@@ -18,7 +18,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { HeaderPrincipalComponent } from './components/principal/header-principal/header-principal.component';
 import { CrearMascotaComponent } from './components/principal/crear-mascota/crear-mascota.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component';
+import { FormAdopcionComponent } from './components/principal/form-adopcion/form-adopcion.component'; 
 import { ChatComponent } from './components/principal/chat-list/chat.component';
 
 
