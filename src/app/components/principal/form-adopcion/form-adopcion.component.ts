@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { Adopcion } from 'src/app/models/adopcion';
 import { ApiService } from 'src/app/services/api.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Solicitud } from 'src/app/models/solicitud';
 
 @Component({
   selector: 'app-form-adopcion',
@@ -25,6 +26,12 @@ export class FormAdopcionComponent implements OnInit {
     email: '',
     numero: '',
     direccion: '',
+    mensaje: '',
+  }
+
+  objSolicitar:Solicitud ={
+    idMascota: 0,
+    idUsuario: 0,
     mensaje: '',
   }
 
@@ -52,12 +59,17 @@ export class FormAdopcionComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
-    const {apellidos, direccion, email}=this.currentUser;
+
+    const {apellidos, direccion, email,id}=this.currentUser;
     this.objAdop.apellidos=apellidos;
     this.objAdop.email=email;
     this.objAdop.direccion=direccion;
     
     const params= this.activateRoute.snapshot.params;
+
+    this.objSolicitar.idMascota=params.id;
+    this.objSolicitar.idUsuario=id;
+    
     console.log(params.id)
     if(params.id){
 
@@ -90,7 +102,7 @@ export class FormAdopcionComponent implements OnInit {
   }
   saveAdoption():void{
     this.objForm.tema='Solicitud de Adopción de mascota';
-    this.objForm.email=this.objAdop.email;//this.objAdop.email
+    this.objForm.email='bryanpalaciosg8@gmail.com';//this.objAdop.email
     this.objForm.mensaje=`
     - Interesado: ${this.objAdop.apellidos} - ${this.objAdop.email}
     - Teléfono: +51 ${this.objAdop.numero}
@@ -98,6 +110,8 @@ export class FormAdopcionComponent implements OnInit {
     - Por la mascota: ${this.mascotaModal.nombre}
     -----------------------------------------------------------------
      ${this.objAdop.mensaje}`;
+     
+     this.objSolicitar.mensaje=this.objAdop.mensaje;
 
      console.log(" ENVIADO",this.objMascota)
      Swal.fire({
@@ -126,7 +140,9 @@ export class FormAdopcionComponent implements OnInit {
         )
         //ACTUALIZAR ESTADO DE MASCOTA
         this.cambiarEstadoM(2);
+        this.enviarSolicitud();
         this.updateMascota();
+        this.router.navigate['/principal/listado'];
       }
     }) 
   }
@@ -151,5 +167,17 @@ export class FormAdopcionComponent implements OnInit {
       err =>console.error(err)
     )
     console.log(this.objMascota);
+  }
+  
+  enviarSolicitud():void{
+    console.log("AQUI200",this.objSolicitar)
+    
+    this.mascotaService.solicitarAdopcion(this.objSolicitar).subscribe(
+      res=>{
+        console.log("registro solicitud: ",res);
+      },
+      err =>console.error(err)
+    );
+
   }
 }

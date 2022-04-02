@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Mascota } from 'src/app/models/mascota';
 import { Observable } from 'rxjs';
+import { Solicitud } from '../models/solicitud';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,8 @@ export class MascotaService {
     return this.http.put(`${this.API_URL}/actualizar`, updateMascot);
   }
   //2 en proceso,3 ya adoptado
+  solicitarAdopcion(solicMascot: Solicitud){ //PASAR EL ID
+    ///return this.http.put(`${this.API_URL}/mascotas/${id}`, updateMascot);
+    return this.http.post<Solicitud>(`https://appservicesdog.azurewebsites.net/solicitud`, solicMascot);
+  }
 }
