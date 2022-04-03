@@ -23,9 +23,10 @@
           </div>
           <div class="card-footer btn-group" style="padding: 0; background-color: white; border: 0;">
             <button class="btn font-clase" style="color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; font-weight: 300; font-size: 15px; " 
-            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" [disabled]="!statusDog(mascota.estado)" [ngClass]="statusDog(mascota.estado)? 'bg-success':'bg-danger'" [routerLink]="['/principal/formAdopcion',mascota.id]">
-               <span *ngIf="statusDog(mascota.estado)">EN ADOPCIÓN</span>
-               <span *ngIf="!statusDog(mascota.estado)">EN PROCESO</span>
+            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" [disabled]="mascota.estado==2 || mascota.estado==3" [ngClass]="[(mascota.estado)==1? 'bg-success':'',(mascota.estado)==2? 'bg-danger':'',(mascota.estado)==3? 'bg-adopt':'']" [routerLink]="['/principal/formAdopcion',mascota.id]">
+               <span *ngIf="(mascota.estado)==1?true:false">EN ADOPCIÓN</span>
+               <span *ngIf="(mascota.estado)==2?true:false">EN PROCESO</span>
+               <span *ngIf="(mascota.estado)==3?true:false">ADOPTADO</span>
               </button>
                <!-- 
                [routerLink]="['/principal/formAdopcion',mascota.id]" 

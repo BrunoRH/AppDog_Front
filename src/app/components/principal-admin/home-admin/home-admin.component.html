@@ -7,9 +7,8 @@
     <div class="page-header">
       <div>
         <h1>Solicitudes de Adopción</h1>
-        <small>Listado de las solicitudes de los usuarios</small>
       </div>
-
+      <!--
       <div class="header-actions">
         <button>
           <span class="las la-file-export"></span>Export
@@ -17,15 +16,15 @@
         <button>
           <span class="las la-tools"></span>Settings
         </button>
-      </div>    
+      </div>  -->  
     </div>
 
-    <div class="container" style="margin-top: 120px;margin-bottom: 50px;">
+    <div class="container" style="margin-top: 50px;margin-bottom: 50px;">
       <div class="" style="display: flex;justify-content: center;align-items: center; height: 68vh;" *ngIf="!loading">
          <div class="plus-loader"></div> 
       </div>
       <div class="table-responsive" *ngIf="loading">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" style="text-align: center;">
           <thead>
             <tr>
               <th scope="col">N° de Solicitud</th>
@@ -39,15 +38,15 @@
               <th scope="row">{{solicitud.id}}</th>
               <td>{{solicitud.idUsuario}}</td>
               <td>{{solicitud.idMascota}}</td>
-              <td >
+              <td ><!--
                 <button type="button" class="btn btn-outline-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
                   Ver más
-                </button>
+                </button>-->
                 <a class="btn btn-outline-danger btn-sm " style="height: 35px;"
-                  (click)="DeletePet(mascota.id)">Rechazar Solicitud  </a>
+                  (click)="statusRechazado(solicitud.idMascota)">Rechazar Solicitud  </a>
 
                   <a class="btn btn-outline-success btn-sm m-4 " style="height: 35px;"
-                  (click)="DeletePet(mascota.id)">Aprobar Solicitud  <i class="fa-solid fa-circle-check"></i>  </a>
+                  (click)="statusAprobado(solicitud.idMascota)">Aprobar Solicitud  <i class="fa-solid fa-circle-check"></i>  </a>
 
                   <!--MODAL PARA LAS SOLICITUDES-->
               </td>
