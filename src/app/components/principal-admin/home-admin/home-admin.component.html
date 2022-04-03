@@ -1,9 +1,15 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+
 <main>
     <div class="page-header">
       <div>
         <h1>Solicitudes de Adopción</h1>
         <small>Listado de las solicitudes de los usuarios</small>
       </div>
+
       <div class="header-actions">
         <button>
           <span class="las la-file-export"></span>Export
@@ -11,10 +17,68 @@
         <button>
           <span class="las la-tools"></span>Settings
         </button>
+      </div>    
+    </div>
+
+    <div class="container" style="margin-top: 120px;margin-bottom: 50px;">
+      <div class="" style="display: flex;justify-content: center;align-items: center; height: 68vh;" *ngIf="!loading">
+         <div class="plus-loader"></div> 
+      </div>
+      <div class="table-responsive" *ngIf="loading">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">N° de Solicitud</th>
+              <th scope="col">ID de Usuario</th>
+              <th scope="col">ID de Mascota</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let solicitud of solicitudes">
+              <th scope="row">{{solicitud.id}}</th>
+              <td>{{solicitud.idUsuario}}</td>
+              <td>{{solicitud.idMascota}}</td>
+              <td >
+                <button type="button" class="btn btn-outline-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
+                  Ver más
+                </button>
+                <a class="btn btn-outline-danger btn-sm " style="height: 35px;"
+                  (click)="DeletePet(mascota.id)">Rechazar Solicitud  </a>
+
+                  <a class="btn btn-outline-success btn-sm m-4 " style="height: 35px;"
+                  (click)="DeletePet(mascota.id)">Aprobar Solicitud  <i class="fa-solid fa-circle-check"></i>  </a>
+
+                  <!--MODAL PARA LAS SOLICITUDES-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
-    <div class="cards">
-
-    </div>
   </main>
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Texto de ejemplo
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   

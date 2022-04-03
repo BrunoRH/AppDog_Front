@@ -14,6 +14,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { HomeAdminComponent } from './components/principal-admin/home-admin/home-admin.component';
 import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
 
+import { ModalSolicitudComponent } from './components/principal-admin/modal-solicitud/modal-solicitud.component';
+
 const routes: Routes = [
   { path: 'home' , component: HomeComponent},
   { path: '' , component: HomeComponent},

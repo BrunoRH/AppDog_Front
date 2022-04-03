@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from "rxjs"; 
 import { User } from "../models/usuario";
 import { Adopcion } from "../models/adopcion";
+import { RegistroI } from "../models/registro.interface";
 
 
 @Injectable({
@@ -22,6 +23,14 @@ export class ApiService{
         let dir = this.url+"/usuarios/login"; 
         console.log("ruta : ", dir);
         return this.http.post<User>(dir,form);
+        console.log(form);
+    }
+
+    registroUser( form : RegistroI) : Observable<ResponseI>{
+
+        let dir = this.url+"/usuarios"; 
+        console.log("ruta : ", dir);
+        return this.http.post<ResponseI>(dir,form);
         console.log(form);
     }
 

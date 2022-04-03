@@ -31,17 +31,6 @@ export class MascotasListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMascotas();
-    /*const params= this.activateRoute.snapshot.params;
-    if(params.id){
-      this.mascotaModel.id=params.id;
-      this.mascotaModel.nombre=params.nombre;
-      this.mascotaModel.tipo=params.tipo;
-      //this.edit=true;
-    }*/
-
-  /*  this.Username = this.activateRoute.snapshot.paramMap.get('idUser');
-    console.log(this.Username);*/
-
   }
 
   loadMascotas(): void {

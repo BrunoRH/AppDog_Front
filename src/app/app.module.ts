@@ -22,6 +22,8 @@ import { FormAdopcionComponent } from './components/principal/form-adopcion/form
 import { ChatComponent } from './components/principal/chat-list/chat.component';
 import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
 import { HomeAdminComponent } from './components/principal-admin/home-admin/home-admin.component';
+import { ModalSolicitudComponent } from './components/principal-admin/modal-solicitud/modal-solicitud.component';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { HomeAdminComponent } from './components/principal-admin/home-admin/home
     FormAdopcionComponent,
     ChatComponent,
     PrincipalAdminComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    ModalSolicitudComponent
   ],
   imports: [
     BrowserModule,

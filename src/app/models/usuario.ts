@@ -1,6 +1,6 @@
 export class User{
 
-    id : string;
+    id : string;        // Esto no se envia
     username: string;
     password: string;
     email : string;
