@@ -10,6 +10,7 @@ import { Adopcion } from 'src/app/models/adopcion';
 import { ApiService } from 'src/app/services/api.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Solicitud } from 'src/app/models/solicitud';
+import { SolicitudService } from 'src/app/services/solicitud.service';
 
 @Component({
   selector: 'app-form-adopcion',
@@ -32,6 +33,7 @@ export class FormAdopcionComponent implements OnInit {
   objSolicitar:Solicitud ={
     idMascota: 0,
     idUsuario: 0,
+    estado:0,
     mensaje: '',
   }
 
@@ -52,8 +54,7 @@ export class FormAdopcionComponent implements OnInit {
   }
   //const { id, dni, nombres, correo, fecCreacion, tipo } = this.currentUser;
 
-  constructor(public sanitizer: DomSanitizer, private serviEmail: ApiService, private mascotaService: MascotaService, private activateRoute
-    : ActivatedRoute, private router:Router) {
+  constructor(public sanitizer: DomSanitizer, private serviEmail: ApiService, private mascotaService: MascotaService, private activateRoute: ActivatedRoute, private router:Router, private solicitudService: SolicitudService) {
       this.cssUrl = 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css';
   }
 
@@ -102,7 +103,7 @@ export class FormAdopcionComponent implements OnInit {
   }
   saveAdoption():void{
     this.objForm.tema='Solicitud de Adopción de mascota';
-    this.objForm.email='bryan.palacios1@unmsm.edu.pe';//this.objAdop.email
+    this.objForm.email='bryanpalaciosg8@gmail.com';//this.objAdop.email
     this.objForm.mensaje=`
     - Interesado: ${this.objAdop.apellidos} - ${this.objAdop.email}
     - Teléfono: +51 ${this.objAdop.numero}
@@ -112,7 +113,7 @@ export class FormAdopcionComponent implements OnInit {
      ${this.objAdop.mensaje}`;
      
      this.objSolicitar.mensaje=this.objAdop.mensaje;
-
+     this.objSolicitar.estado=2;
      console.log(" ENVIADO",this.objMascota)
      Swal.fire({
       title: '¿Estas seguro de enviar el formulario?',
@@ -172,7 +173,7 @@ export class FormAdopcionComponent implements OnInit {
   enviarSolicitud():void{
     console.log("AQUI200",this.objSolicitar)
     
-    this.mascotaService.solicitarAdopcion(this.objSolicitar).subscribe(
+    this.solicitudService.solicitarAdopcion(this.objSolicitar).subscribe(
       res=>{
         console.log("registro solicitud: ",res);
       },

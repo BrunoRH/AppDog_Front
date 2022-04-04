@@ -65,7 +65,8 @@ export class MascotasListComponent implements OnInit {
           err =>{
             if(err.status == 200){
               console.log("Se elimino el objeto");
-              this.loadMascotas();
+              let index= this.mascotas.map(p =>p.id).indexOf(id)
+              this.mascotas.splice(index,1);
             }
           }
         )

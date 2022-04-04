@@ -29,6 +29,14 @@ export class HomeAdminComponent implements OnInit {
     imagen: '',
   }
 
+  objSolicitud:Solicitud ={
+    id:0,
+    idMascota: 0,
+    idUsuario: 0,
+    estado:0,
+    mensaje: '',
+  }
+
   ngOnInit(): void {
     this.loadSolicitudes();
   }
@@ -56,13 +64,20 @@ export class HomeAdminComponent implements OnInit {
     )
   }
 
-  statusRechazado(id:string): void{
-    this.getMascotaR(id);
-    //this.updateMascota();
+  statusRechazado(solicitud: Solicitud): void{
+    const {id,idMascota} =solicitud;
+    let idm= idMascota.toString();
+    this.getMascotaR(idm);
+    this.updatecamposSolicitud(1,solicitud);
+    this.updateSolicitud();
+    this.eliminarSolicitud(id);
   }
-  statusAprobado(id:string): void{
+  statusAprobado(solicitud: Solicitud): void{
+    const {idMascota} =solicitud;
+    let id= idMascota.toString();
     this.getMascotaA(id);
-    //this.updateMascota();
+    this.updatecamposSolicitud(3,solicitud);
+    this.updateSolicitud();
   }
 
   cambiarEstadoM(estado:number):void{
@@ -120,4 +135,36 @@ export class HomeAdminComponent implements OnInit {
     )
     console.log(this.objMascota);
   }
+  
+  eliminarSolicitud(id:number):void{
+    /*var indice = this.solicitudes.indexOf( this.solicitudes[id]); // obtenemos el indice*/
+    console.log("INDICE: ",id);
+    let index= this.solicitudes.map(p =>p.id).indexOf(id)
+    this.solicitudes.splice(index,1);
+    
+    this.solicitudService.deleteSolicitud(id).subscribe(
+      res=> console.log(res),
+      err=>console.log(err)
+    )
+  }
+
+  updateSolicitud():void{
+    console.log("AQUI19",this.objSolicitud)
+    this.solicitudService.solicitarAdopcion(this.objSolicitud).subscribe(
+      res=>{
+        console.log("registro solicitud: ",res);
+        this.loadSolicitudes();
+      },
+      err =>console.error(err)
+    );
+  }
+
+  updatecamposSolicitud(estado: number,solicitud: Solicitud):void{
+    this.objSolicitud.id=solicitud.id;
+    this.objSolicitud.idMascota=solicitud.idMascota;
+    this.objSolicitud.idUsuario=solicitud.idUsuario;
+    this.objSolicitud.estado=estado;
+    this.objSolicitud.mensaje=solicitud.mensaje;
+  }
+
 }

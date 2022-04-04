@@ -24,31 +24,41 @@
          <div class="plus-loader"></div> 
       </div>
       <div class="table-responsive" *ngIf="loading">
-        <table class="table table-bordered table-hover" style="text-align: center;">
+        <table class="table table-bordered table-hover" style="text-align: center;align-self: center;">
           <thead class="table-dark">
             <tr>
               <th scope="col">N° de Solicitud</th>
               <th scope="col">ID de Usuario</th>
               <th scope="col">ID de Mascota</th>
+              <th scope="col">Estado</th>
               <th scope="col">Opciones</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let solicitud of solicitudes">
-              <th scope="row">{{solicitud.id}}</th>
+              <th scope="row" style="font-size: 12px;">ADOP-{{solicitud.id}}</th>
               <td>{{solicitud.idUsuario}}</td>
               <td>{{solicitud.idMascota}}</td>
+              <td>
+                <span *ngIf="solicitud.estado== 1">En Adopcion</span>
+                <span *ngIf="solicitud.estado== 2">En proceso</span>
+                <span *ngIf="solicitud.estado== 3">Adoptado</span>
+              </td>
               <td ><!--
                 <button type="button" class="btn btn-outline-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
                   Ver más
                 </button>-->
                 <a class="btn btn-outline-danger btn-sm " style="height: 35px;"
-                  (click)="statusRechazado(solicitud.idMascota)">Rechazar Solicitud  </a>
+                  (click)="statusRechazado(solicitud)">Rechazar <i class="las la-minus-circle"></i></a>
 
                   <a class="btn btn-outline-success btn-sm m-4 " style="height: 35px;"
-                  (click)="statusAprobado(solicitud.idMascota)">Aprobar Solicitud  <i class="fa-solid fa-circle-check"></i>  </a>
+                  (click)="statusAprobado(solicitud)">Aprobar <i class="las la-check-circle"></i>  </a>
 
                   <!--MODAL PARA LAS SOLICITUDES-->
+              </td>
+              <td>
+                <a (click)="eliminarSolicitud(solicitud.id)"><img src="../../../../assets/img/icon_close.svg" alt=""></a>
               </td>
             </tr>
           </tbody>
