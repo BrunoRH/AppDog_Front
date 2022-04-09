@@ -15,6 +15,7 @@ import { HomeAdminComponent } from './components/principal-admin/home-admin/home
 import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
 
 import { ModalSolicitudComponent } from './components/principal-admin/modal-solicitud/modal-solicitud.component';
+import { PerrosAdminComponent } from './components/principal-admin/perros-admin/perros-admin.component';
 
 const routes: Routes = [
   { path: 'home' , component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'interfaz-admin', component: PrincipalAdminComponent, children: [
     { path: '', redirectTo: 'home-admin', pathMatch: 'full' },
     { path: 'home-admin', component: HomeAdminComponent},
+    { path: 'mascotas-admin', component: PerrosAdminComponent},
     { path: '**', redirectTo: 'home-admin' }
   ],canActivate:[AdminGuard]}
 ];

@@ -103,7 +103,7 @@ export class FormAdopcionComponent implements OnInit {
   }
   saveAdoption():void{
     this.objForm.tema='Solicitud de Adopción de mascota';
-    this.objForm.email='bryanpalaciosg8@gmail.com';//this.objAdop.email
+    this.objForm.email='bryan.palacios1@unmsm.edu.pe';//this.objAdop.email
     this.objForm.mensaje=`
     - Interesado: ${this.objAdop.apellidos} - ${this.objAdop.email}
     - Teléfono: +51 ${this.objAdop.numero}

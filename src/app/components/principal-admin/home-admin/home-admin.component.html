@@ -49,11 +49,11 @@
                 <button type="button" class="btn btn-outline-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
                   Ver más
                 </button>-->
-                <a class="btn btn-outline-danger btn-sm " style="height: 35px;"
-                  (click)="statusRechazado(solicitud)">Rechazar <i class="las la-minus-circle"></i></a>
+                <button class="btn btn-danger btn-sm " style="height: 35px;"
+                  (click)="statusRechazado(solicitud)"[disabled]="solicitud.estado== 3">Rechazar <i class="las la-minus-circle"></i></button>
 
-                  <a class="btn btn-outline-success btn-sm m-4 " style="height: 35px;"
-                  (click)="statusAprobado(solicitud)">Aprobar <i class="las la-check-circle"></i>  </a>
+                  <button class="btn btn-success btn-sm m-4 " style="height: 35px;"
+                  (click)="statusAprobado(solicitud)" [disabled]="solicitud.estado== 3">Aprobar <i class="las la-check-circle"></i>  </button>
 
                   <!--MODAL PARA LAS SOLICITUDES-->
               </td>

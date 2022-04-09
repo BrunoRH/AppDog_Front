@@ -35,9 +35,5 @@ export class MascotaService {
     ///return this.http.put(`${this.API_URL}/mascotas/${id}`, updateMascot);
     return this.http.put(`${this.API_URL}/actualizar`, updateMascot);
   }
-  //2 en proceso,3 ya adoptado
-  solicitarAdopcion(solicMascot: Solicitud){ //PASAR EL ID
-    ///return this.http.put(`${this.API_URL}/mascotas/${id}`, updateMascot);
-    return this.http.post<Solicitud>(`https://appservicesdog.azurewebsites.net/solicitud`, solicMascot);
-  }
+
 }

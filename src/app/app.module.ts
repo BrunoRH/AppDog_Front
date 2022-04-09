@@ -23,6 +23,7 @@ import { ChatComponent } from './components/principal/chat-list/chat.component';
 import { PrincipalAdminComponent } from './components/principal-admin/principal-admin.component';
 import { HomeAdminComponent } from './components/principal-admin/home-admin/home-admin.component';
 import { ModalSolicitudComponent } from './components/principal-admin/modal-solicitud/modal-solicitud.component';
+import { PerrosAdminComponent } from './components/principal-admin/perros-admin/perros-admin.component';
 
 
 
@@ -42,7 +43,8 @@ import { ModalSolicitudComponent } from './components/principal-admin/modal-soli
     ChatComponent,
     PrincipalAdminComponent,
     HomeAdminComponent,
-    ModalSolicitudComponent
+    ModalSolicitudComponent,
+    PerrosAdminComponent
   ],
   imports: [
     BrowserModule,
