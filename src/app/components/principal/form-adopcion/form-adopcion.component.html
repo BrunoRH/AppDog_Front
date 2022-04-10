@@ -1,6 +1,6 @@
 <link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
 
-<div class="container" style="margin-top: 150px;margin-bottom: 50px;">
+<div class="container margin-g">
     
     <div class="" style="display: flex;justify-content: center;align-items: center; height: 67vh;" *ngIf="!loading">
         <div class="plus-loader"></div> 
@@ -66,11 +66,11 @@
             </form>
 
         </div>
-        <div class="col-md-6 p-5">
+        <div class="col-md-6 padd-xy">
           <div class="card text-center mb-4 font-clase" style="border-radius: 10px;">
 
             <img [src]="mascotaModal.imagen" class="card-img-top" style="width: 100%;">
-            <div class="card-body d-flex  p-5" style="justify-content: space-between;">
+            <div class="card-body d-flex padd-xy" style="justify-content: space-between;">
                 <div class="text-start mb-0">
                     <p class="card-title font-clase2">
                         <span class="font-clase1">Nombre:</span> {{mascotaModal.nombre}}

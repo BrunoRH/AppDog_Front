@@ -1,7 +1,16 @@
 .bg-adopt{
   background-color: #da960e;
 }
-
+.margin-xy{
+  margin-top: 120px;
+  margin-bottom: 50px;
+}
+@media(max-width:991px){
+  .margin-xy{
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}
 @-moz-keyframes plus-loader-top {
     2.5% {
       background: #f86;
