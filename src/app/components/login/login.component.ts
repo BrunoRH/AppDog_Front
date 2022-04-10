@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   })
   
   idUser= '';
-  
+  loading:boolean=false;
   constructor( private api:ApiService, private router:Router, private route: ActivatedRoute){
 
   }
@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
   errorMsj : any = "";
 
   ngOnInit(): void {
-      
+    
   }
 
   onLogin(form:LoginI){
 
     console.log(form);
     this.api.loginByEmail(form).subscribe(data =>{
-      console.log(data);
+      console.log("data",data);
       localStorage.setItem('user', JSON.stringify(data));
       let dataResponse:User = data;
       const userP = {
@@ -54,27 +54,28 @@ export class LoginComponent implements OnInit {
       this.idUser = dataResponse.username;
       
       if(dataResponse != null){
+        this.errorStatus=false;
         //localStorage.setItem("token", dataResponse.result.token);
-        Swal.fire({
-          icon: 'success',
-          title: 'Inicio de sesión exitoso',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          if(dataResponse.rol == 'ADMIN') this.router.navigate(["/interfaz-admin"])
-          else this.router.navigate(["/principal"])
-        })
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Error de inicio',
-          timer: 3000
-        });
+        this.loading=true;
+          Swal.fire({
+            icon: 'success',
+            title: 'Inicio de sesión exitoso',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            if(dataResponse.rol == 'ADMIN') this.router.navigate(["/interfaz-admin"])
+            else this.router.navigate(["/principal"])
+          })
       }
+    },
+    err=> {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de inicio',
+        timer: 3000
+      });
+      this.loading=true;
+      this.errorStatus=true;
     })
-    
   }
-
-
-
 }

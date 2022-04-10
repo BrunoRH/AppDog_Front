@@ -291,4 +291,8 @@ html {
       outline: none;
   } 
   
-  
+  .loadingclass{
+    background-color: rgba(43, 41, 41,0.2);
+    position:absolute;
+    height: 100vh;
+  }
